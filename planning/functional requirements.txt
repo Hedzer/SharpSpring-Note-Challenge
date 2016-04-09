@@ -1,0 +1,37 @@
+Minimum Viable Product:
+	0. Laravel/Lumen Learning	2 Days
+	1. Login					0.5 Days
+	2. Logout					0.5 Days
+	3. Create A Note 			1 Day
+		a. A Typed Note
+	4. Update A Note 			1 Day
+	5. Read A Note 				0.5 Days
+	6. Delete A Note 			0.5 Days
+	7. Sort Notes 				1 Day
+		a. By Date/Time
+		b. By Category
+							Total: 7 Days
+
+Desired Product:
+	1. Login
+	2. Logout
+	3. Create A Note
+		a. A Typed Note (WYSIWYG)
+		b. A Dictated Note (Speech-To-Text If Available)
+		c. A Drawn Note (Vector)
+	4. Update A Note
+	5. Read A Note
+	6. Delete A Note
+	7. Sort Notes
+		a. By Date/Time
+		b. By Category
+	8. Voice Controls
+		a. Logout
+		b. Create A Note
+			i. select input type
+		c. Select Notes For Action
+		d. Update A Note
+		e. Delete A Note
+		f. Sort Notes
+			i. By Date/Time
+			ii. By Category
