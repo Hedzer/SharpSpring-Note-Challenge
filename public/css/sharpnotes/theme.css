@@ -1,0 +1,44 @@
+/* Components */
+.navbar {
+	background-color: #79B83F;
+}
+.navbar .brand {
+	font-family: 'Merienda One', cursive;
+    color: rgba(2, 101, 38, 0.8);
+    text-shadow: 0.05em 0.25em 0.25em #79B83F, 0 0 0 #000, 0.125em 0.25em 0.25em #79B83F;
+    cursor: default;
+	-webkit-animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	-ms-animation: fadein 1s;
+	-o-animation: fadein 1s;
+	animation: fadein 1s;
+}
+/* Properties */
+.transitions {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
