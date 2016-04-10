@@ -17,6 +17,8 @@ class MigrateUsersTable extends Migration
             $table->string('name', 255);
             $table->string('email', 255);
             $table->string('password', 255);
+            $table->string('salt', 255);
+            $table->string('token', 255);
             $table->timestamps();
             $table->timestamp('created_at')->useCurrent();
             $table->unique('email');
