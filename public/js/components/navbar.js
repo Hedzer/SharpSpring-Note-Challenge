@@ -1,13 +1,26 @@
-"use strict";
+define(
+	[
+		'frameworks/syrup',
+		'components/mixins/scalable'
+	],
+	function(Syrup, scalable){
+		function navbar(){
+			Syrup.Elements.nav.call(this);
+			scalable(this);
+			var div = Syrup.Elements.div;
+			this.class = 'navbar';
+			this.className = 'navbar';
+			this.add(new div()).as('Brand').with(function(){
+				this.className = 'brand';
+			});
+			this.add('brand'); //add the eventful property
+			this.on('brandPropertyChanged', function(e){
+				this.Brand.textContent = e.detail.new;
+			});
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-(function () {
-	'use strict';
-
-	var navbar = function navbar() {
-		_classCallCheck(this, navbar);
-
-		console.log("I'm a navbar!");
-	};
-})();
+		}
+		navbar.prototype = Object.create(Syrup.Elements.nav.prototype);
+		navbar.prototype.constructor = navbar;
+		return navbar;
+	}
+);
