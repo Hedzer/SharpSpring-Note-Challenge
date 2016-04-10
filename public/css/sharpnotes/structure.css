@@ -1,0 +1,21 @@
+.navbar {
+	position: absolute;
+	width:100em;
+	height:3.5em;
+	text-align: center;
+}
+.navbar .brand {
+	height:1.75em;
+	font-size: 2em;
+	line-height: 1.75em;
+	overflow: hidden;
+}
+@media (orientation:portrait) {
+
+}
+@media (orientation:landscape) { 
+	.navbar .brand {
+		position: relative;
+		display: inline-block;
+	}
+}
