@@ -1,5 +1,6 @@
 (function(){
-	// ---------- COMPATIBILITY TESTS ----------
+
+	// ---------- FEATURE DETECTION ----------
 	//ES5 Tests
 	var ES5 = (function () { 
 		// Also, rudimentary, a more trustworthy method could me created
@@ -35,49 +36,43 @@
 		window.mozSpeechRecognition ||
 		window.msSpeechRecognition ||
 		window.oSpeechRecognition;
-	// ---------- END COMPATIBILITY TESTS ----------
+
+	var SVG = document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1");
+	var Supports = {
+		ES5:ES5,
+		ViewportUnits:CSSVP,
+		SpeechRecognition:SpeechRecognition
+	};
+	// ---------- END FEATURE DETECTION ----------
+
 	//Application dependencies
 	require.config({
+		baseUrl:"/js/",
 		paths: {
 			//shims
-			'ES5-Shim': 		'/js/shims/es5-shim.min',
-			'Viewport-Shim': 	'/js/shims/vminpoly.min',
-			//frameworks
-			'Syrup': 			'/js/frameworks/syrup.min',
-			'Gomme': 			'/js/frameworks/gomme.min',
-			//components
-			'Navigation Bar': 	'/js/components/navbar',
-			'List': 			'/js/components/list',
-			'Note List Item': 	'/js/components/noteListItem',
-			//app
-			'SharpNotes': 		'/js/apps/sharpnotes.app'
+			'ES5-Shim': 		'shims/es5-shim.min',
+			'Viewport-Shim': 	'shims/vminpoly.min',
+			'SharpNotes': 		'apps/sharpnotes.app'
 		}
 	});
 
 	//Load Application
 	/*
 		Optimization Notes:
-		Normally I'd split up the calls into modules, but given that I've lost "two days" on Laravel/Lumen
-		I'm inclined to not complicate this project more than needed. Another option would be to minify+combine
-		to reduce requests, and ideally these sources would be CDN hosted.  For reliability, and the sake of speed
-		I'm locally hosting these, and just pulling them all in a single require. :/
+			The following should be done if used for serious production:
+				1. Optimize using requirejs's r.js
+				2. Upload all the static content to a CDN or subdomains used for static content
+			Optionally, if using a compatible browser, a Service Worker can be installed to handle resource requests.
+			These steps were not taken to assure reliability when loading locally, and for some ease in debugging.
 	*/
 	require(
 		[
 			//shims
-			(!ES5 ? 'ES5-Shim' : null),
-			(!CSSVP ? 'Viewport-Shim' : null),
-			//frameworks
-			'Syrup',
-			'Gomme',
-			//components
-			'Navigation Bar',
-			'List',
-			'Note List Item',
-			//app
+			(!Supports.ES5 ? 'ES5-Shim' : null),
+			(Supports.ViewportUnits ? 'Viewport-Shim' : null),
 			'SharpNotes'
 		],
-		function(){
+		function(es5, cssvp, SharpNotes){
 			console.log("Loading complete!");
 		}
 	)
