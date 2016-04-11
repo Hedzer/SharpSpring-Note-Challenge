@@ -4,9 +4,10 @@ define(
 		'components/app',
 		'components/navbar',
 		'components/page',
-		'components/matchstick'
+		'components/matchstick',
+		'components/responsiveImage'
 	],
-	function(Syrup, app, navigation, page, matchstick){
+	function(Syrup, app, navigation, page, matchstick, responsiveImage){
 		function SharpNotes(){
 			app.call(this);
 			this.class = 'SharpNotes';
