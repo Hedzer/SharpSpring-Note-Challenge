@@ -1,0 +1,28 @@
+.matchstick {
+	position: relative;
+	width:10em;
+	height:1em;
+}
+.matchstick .head {
+	position: absolute;
+	width:1em;
+	height: 1em;
+}
+.matchstick .body {
+	position: absolute;
+	top:0em;
+	right:0em;
+	bottom:0em;
+	left:0em;
+	height: 1em;
+}
+.matchstick .text {
+	position: absolute;
+	top: 0em;
+	right: 0em;
+	bottom: 0em;
+	left: 0em;
+	padding-left:1em;
+	line-height: 1em;
+	text-align: left;
+}

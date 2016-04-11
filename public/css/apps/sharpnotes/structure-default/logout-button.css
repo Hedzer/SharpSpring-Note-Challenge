@@ -1,0 +1,11 @@
+.navbar > .matchstick.logout-button {
+	position: absolute;
+	top:0em;
+	right:0em;
+	width:3em;
+	font-size:350%;
+}
+.navbar > .matchstick .body .text {
+	font-size: 35%;
+	line-height: 3em;
+}

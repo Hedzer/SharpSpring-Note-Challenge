@@ -10,12 +10,3 @@
 	line-height: 1.75em;
 	overflow: hidden;
 }
-@media (orientation:portrait) {
-
-}
-@media (orientation:landscape) { 
-	.navbar .brand {
-		position: relative;
-		display: inline-block;
-	}
-}
