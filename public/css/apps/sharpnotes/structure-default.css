@@ -6,8 +6,9 @@
 @import url("../../components/navbar.css");
 @import url("../../components/matchstick.css");
 
-/* App Specific Components */
+/* App Specific Structural Changes */
 @import url('./structure-default/logout-button.css');
+@import url('./structure-default/navbar.css');
 
 /* Responsive */
 @import url('./structure-default/landscape.css');
