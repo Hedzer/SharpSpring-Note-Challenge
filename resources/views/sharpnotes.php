@@ -5,14 +5,17 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<!-- End Meta Tags-->
 		<title>Sharp Notes</title>
-		<link rel="stylesheet" type="text/css" href="/css/common/em-based-reset.css">
-		<link rel="stylesheet" type="text/css" href="/css/sharpnotes/structure.css">
-		<!-- Can easily be variable for theme swapping -->
-		<link rel="stylesheet" type="text/css" href="/css/sharpnotes/theme.css">
-		<link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+		<?php if($app->environment('development')): ?>
+			<link rel="stylesheet" type="text/css" href="/css/apps/sharpnotes.css">
+		<?php else: ?>
+			<link rel="stylesheet" type="text/css" href="/css/apps/sharpnotes.built.css">
+		<?php endif; ?>
 	</head>
 	<body>
-		<!-- <script data-main="/js/apps/sharpnotes.requires.js" src="/js/libs/require.min.js"></script> -->
-		<script data-main="/js/apps/sharpnotes.app.built.js" src="/js/libs/require.min.js"></script>
+		<?php if($app->environment('development')): ?>
+			<script data-main="/js/apps/sharpnotes.requires.js" src="/js/libs/require.min.js"></script>
+		<?php else: ?>
+			<script type="text/javascript" src="/js/apps/sharpnotes.app.built.js"></script>
+		<?php endif; ?>
 	</body>
 </html>
