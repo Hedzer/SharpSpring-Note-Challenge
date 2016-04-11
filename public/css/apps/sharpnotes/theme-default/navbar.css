@@ -1,0 +1,14 @@
+.navbar {
+	background-color: #79B83F;
+}
+.navbar .brand {
+	font-family: 'Merienda One', cursive;
+    color: rgba(2, 101, 38, 0.8);
+    text-shadow: 0.05em 0.25em 0.25em #79B83F, 0 0 0 #000, 0.125em 0.25em 0.25em #79B83F;
+    cursor: default;
+	-webkit-animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	-ms-animation: fadein 1s;
+	-o-animation: fadein 1s;
+	animation: fadein 1s;
+}
