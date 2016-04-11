@@ -52,6 +52,7 @@
 			//shims
 			'ES5-Shim': 		'shims/es5-shim.min',
 			'Viewport-Shim': 	'shims/vminpoly.min',
+			//app
 			'SharpNotes': 		'apps/sharpnotes.app'
 		}
 	});
@@ -68,11 +69,15 @@
 	require(
 		[
 			//shims
-			(!Supports.ES5 ? 'ES5-Shim' : null),
-			(Supports.ViewportUnits ? 'Viewport-Shim' : null),
+			'ES5-Shim',
+			'Viewport-Shim',
+			//app
 			'SharpNotes'
 		],
 		function(es5, cssvp, SharpNotes){
+			var instance = new SharpNotes();
+			instance.addTo(document.body);
+			instance.start();
 			console.log("Loading complete!");
 		}
 	)
