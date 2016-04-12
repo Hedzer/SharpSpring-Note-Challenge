@@ -97,9 +97,11 @@ define(function(){
 					Syrup.Prototypes.element[key] = method;
 				});
 				if (!Syrup.Elements.element){
-					function element(){}
-					element.prototype = Syrup.Prototypes.element;
-					Syrup.Elements.element = element;
+					(function(){
+						function element(){}
+						element.prototype = Syrup.Prototypes.element;
+						Syrup.Elements.element = element;						
+					})();
 				}
 				Syrup.tags.forEach(Syrup.addTag.bind(Syrup));
 				initialized = true;
