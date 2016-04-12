@@ -1,3 +1,10 @@
 .navbar {
 	text-align: left;
+	z-index: 10;
+}
+.navbar .brand {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	padding:0em 1em;
 }
