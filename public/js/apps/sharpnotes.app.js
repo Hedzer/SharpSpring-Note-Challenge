@@ -5,9 +5,10 @@ define(
 		'components/navbar',
 		'components/page',
 		'components/matchstick',
-		'components/responsiveImage'
+		'components/responsiveImage',
+		'components/sharpnotes/noteList'
 	],
-	function(Syrup, app, navigation, page, matchstick, responsiveImage){
+	function(Syrup, app, navigation, page, matchstick, responsiveImage, list){
 		function SharpNotes(){
 			app.call(this);
 			this.class = 'SharpNotes';
@@ -17,15 +18,20 @@ define(
 				this.brand = '#Sharp Notes';
 				//Logout Button
 				this.add(new matchstick()).as('Logout').with(function(){
-					this.classList.add('logout-button');
-					this.classList.add('cursive');
+					var logoutButton = this;
+					var buttonText = logoutButton.Body.Text;
+					//classes to add
+					['logout-button', 'cursive'].forEach(function(c){
+						logoutButton.classList.add(c);
+					});
 					this.Body.Text.textContent = 'Logout';
-					this.Head.style.background = 'black';
-					this.Body.style.background = 'red';
 				});
 			});
-			this.add(new page()).as("Page").with(function(){
-
+			//Page
+			this.add(new page()).as('Page').with(function(){
+				this.add(new list()).as('NoteList').with(function(){
+					this.classList.add('note-list');
+				});
 			});
 		}
 		SharpNotes.prototype = Object.create(app.prototype);
