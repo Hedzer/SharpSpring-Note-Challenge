@@ -14,13 +14,30 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
-$app->get('/install', function () use ($app) {
-	//check if already installed
-	return view('install');
+$app->group(['prefix' => 'api', 'middleware' => 'jwt.auth'], function () use ($app) {
+	$app->get('/', function ()    {
+
+	});
 });
-$app->get('/app/{name}', function ($name) use ($app) {
-	//check if user has access to the app
-	if (view()->exists($name)){
-		return view($name);
-	}
+$app->group(['prefix' => 'app', 'middleware' => 'jwt.auth'], function () use ($app) {
+	$app->get('/{name}', function ($name) use ($app) {
+		//check if user has access to the app
+		if (view()->exists($name)){
+			return view($name);
+		}
+	});
 });
+$app->group(['prefix' => 'app'], function () use ($app) {
+	$app->get('/{name}', function ($name) use ($app) {
+		//check if user has access to the app
+		if (view()->exists($name)){
+			return view($name);
+		}
+	});
+});
+// $app->get('/app/{name}', function ($name) use ($app) {
+// 	//check if user has access to the app
+// 	if (view()->exists($name)){
+// 		return view($name);
+// 	}
+// });
