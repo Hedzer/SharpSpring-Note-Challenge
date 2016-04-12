@@ -1,5 +1,6 @@
 @media (orientation:portrait) {
-	.navbar {
-		text-align: left;
+	.list.note-list {
+		position: absolute;
+		right:0em;
 	}
 }
