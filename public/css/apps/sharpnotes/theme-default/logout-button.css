@@ -1,0 +1,10 @@
+.navbar > .logout-button {
+	background-color: rgba(181,220,101,0.6);
+}
+.navbar > .logout-button .body .text {
+	color: #3F4F2F;
+	cursor: pointer;
+}
+.navbar > .logout-button .body .text:hover {
+	color:#141B0D;
+}

@@ -1,10 +1,13 @@
 .navbar {
-	background-color: #79B83F;
+	background-color: #D4FFAB;
+	-webkit-box-shadow: 0.0em 0.1em 0.5em 0.01em rgba(190,190,190,0.75);
+	-moz-box-shadow: 0.0em 0.1em 0.5em 0.01em rgba(190,190,190,0.75);
+	box-shadow: 0.0em 0.1em 0.5em 0.01em rgba(190,190,190,0.75);
 }
 .navbar .brand {
 	font-family: 'Merienda One', cursive;
-    color: rgba(2, 101, 38, 0.8);
-    text-shadow: 0.05em 0.25em 0.25em #79B83F, 0 0 0 #000, 0.125em 0.25em 0.25em #79B83F;
+    color: rgba(107, 167, 15, 0.8);
+    text-shadow: 0.05em 0.25em 0.25em #D4FFAB, 0 0 0 #000, 0.125em 0.25em 0.25em #D4FFAB;
     cursor: default;
 	-webkit-animation: fadein 1s;
 	-moz-animation: fadein 1s;
