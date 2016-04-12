@@ -18,7 +18,7 @@ define(
 			this.Menu.add(new matchstick()).as('AddNote').with(function(){
 				this.classList.add('add-note');
 				this.Head.add(new img()).as('Picture').with(function(){
-					this.src = '/images/add.svg';
+					this.src = '/images/add.svg.php?color=9ACD32';
 					this.className = 'svg-icon';
 				});
 				this.Body.Text.with(function(){
