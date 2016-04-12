@@ -52,6 +52,7 @@
 			//shims
 			'ES5-Shim': 		'shims/es5-shim.min',
 			'Viewport-Shim': 	'shims/vminpoly.min',
+			'ClassListPoly': 	'shims/classList',
 			//app
 			'SharpNotes': 		'apps/sharpnotes.app'
 		}
