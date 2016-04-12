@@ -4,11 +4,15 @@
 /* Components */
 @import url("../../components/app.css");
 @import url("../../components/navbar.css");
+@import url("../../components/page.css");
 @import url("../../components/matchstick.css");
+@import url("../../components/list.css");
 
 /* App Specific Structural Changes */
 @import url('./structure-default/logout-button.css');
 @import url('./structure-default/navbar.css');
+@import url('./structure-default/page.css');
+@import url('./structure-default/note-list.css');
 
 /* Responsive */
 @import url('./structure-default/landscape.css');
