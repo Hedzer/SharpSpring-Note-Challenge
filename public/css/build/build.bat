@@ -1,2 +1,3 @@
-node r -o config.js
+node r -o login.js
+node r -o sharpnotes.js
 pause
