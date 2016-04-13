@@ -1,17 +1,35 @@
-.transitions {
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
+.transitions-all {
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+.transitions-background-color {
+	-webkit-transition: background-color 0.1s ease-in-out;
+	-moz-transition: background-color 0.1s ease-in-out;
+	-o-transition: background-color 0.1s ease-in-out;
+	transition: background-color 0.1s ease-in-out;
 }
 .cursive {
 	font-family: 'Merienda One', cursive;
 }
-.clickable-link {
-	color: #3F4F2F;
-	text-decoration:underline;
+.button-a {
+	background-color: #C7F36E;
 	cursor: pointer;
 }
-.clickable-link:hover {
-	color:#141B0D;
+.button-a:hover {
+	background-color: #BCE665;
+}
+.button-a:active {
+	background-color: #B5DC65;
+}
+.button-b { /*A light grey*/
+	background-color: #F8F8F8;
+	cursor: pointer;
+}
+.button-b:hover { /*A slightly darker grey*/
+	background-color: #F0F0F0;
+}
+.button-b:active { /*An even darker one than the last*/
+	background-color: #E6E6E6;
 }

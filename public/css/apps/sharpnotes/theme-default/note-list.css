@@ -3,3 +3,6 @@
 	-moz-box-shadow: .25em 0em 0.5em -.2em rgba(190,190,190,1);
 	box-shadow: .25em 0em 0.5em -.2em rgba(190,190,190,1);
 }
+.note-list .menu .add-note {
+	color:#768468;
+}
