@@ -19,6 +19,7 @@ $app->group(['prefix' => 'api', 'middleware' => 'jwt.auth'], function () use ($a
 
 	});
 });
+//Authenticated routes
 $app->group(['prefix' => 'app', 'middleware' => 'jwt.auth'], function () use ($app) {
 	$app->get('/{name}', function ($name) use ($app) {
 		//check if user has access to the app
@@ -27,14 +28,17 @@ $app->group(['prefix' => 'app', 'middleware' => 'jwt.auth'], function () use ($a
 		}
 	});
 });
+//Unauthenticated, leads to login
 $app->group(['prefix' => 'app'], function () use ($app) {
 	$app->get('/{name}', function ($name) use ($app) {
 		//check if user has access to the app
-		if (view()->exists($name)){
-			return view($name);
+		if (view()->exists('login')){
+			return view('login');
 		}
 	});
 });
+
+$app->post('auth/login', 'Authentication@login');
 // $app->get('/app/{name}', function ($name) use ($app) {
 // 	//check if user has access to the app
 // 	if (view()->exists($name)){
