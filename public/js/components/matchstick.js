@@ -35,24 +35,11 @@ define(
 			this.on('headAlignmentPropertyChanged', function(e){
 				var value = String(e.detail.new).toLowerCase();
 				if (value === 'right'){
-					this.Head.style.inline = {
-						left:'auto',
-						right:'0em'
-					};
-					this.Body.style.inline = {
-						left:'0em',
-						right:'1em'
-					};
-					return;
+					this.classList.add('align-left');
+					this.classList.remove('align-right');
 				}
-				this.Head.style.inline = {
-					left:'0em',
-					right:'auto'
-				};
-				this.Body.style.inline = {
-					left:'1em',
-					right:'0em'
-				};
+				this.classList.add('align-left');
+				this.classList.remove('align-left');
 			});
 			this.headAlignment = 'left';
 		}

@@ -13,7 +13,7 @@
 	top:0em;
 	right:0em;
 	bottom:0em;
-	left:0em;
+	left:1em;
 	height: 1em;
 }
 .matchstick .text {
@@ -25,4 +25,20 @@
 	padding-left:1em;
 	line-height: 1em;
 	text-align: left;
+}
+.matchstick.align-left .body {
+	left:1em;
+	right:0em;
+}
+.matchstick.align-right .body {
+	left:0em;
+	right:1em;
+}
+.matchstick.align-left .head {
+	left:0em;
+	right:auto;
+}
+.matchstick.align-right .head {
+	left:auto;
+	right:0em;
 }
