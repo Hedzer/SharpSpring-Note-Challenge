@@ -16,15 +16,17 @@ define(
 
 			//Visual Additons
 			this.Menu.add(new matchstick()).as('AddNote').with(function(){
-				this.classList.add('add-note');
+				var addNote = this;
+				['add-note','button-b','transitions-background-color', 'cursive'].forEach(function(c){
+					addNote.classList.add(c);
+				});
 				this.Head.add(new img()).as('Picture').with(function(){
-					this.src = '/images/add.svg.php?color=9ACD32';
+					this.src = '/images/add.svg.php?color=82ad2c';
 					this.className = 'svg-icon';
 				});
 				this.Body.Text.with(function(){
 					this.textContent = 'New Note';
-					this.classList.add('cursive');
-				})
+				});
 			});
 
 		}
