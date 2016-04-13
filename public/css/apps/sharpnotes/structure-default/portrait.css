@@ -3,4 +3,8 @@
 		position: absolute;
 		right:0em;
 	}
+	.note-list .menu .add-note {
+		left:0em;
+		right:auto;
+	}
 }
