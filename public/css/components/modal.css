@@ -5,4 +5,5 @@
 	bottom:0em;
 	left:0em;
 	background-color: rgba(0,0,0, 0.74);
+	z-index:100;
 }

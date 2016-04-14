@@ -1,0 +1,13 @@
+.login {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 30em;
+	height: 30em;
+	margin: -15em 0em 0em -15em;
+}
+.login .header {
+	width:30em;
+	height:4em;
+	border-bottom:solid 1px gainsboro;
+}

@@ -7,12 +7,15 @@
 @import url("../../components/page.css");
 @import url("../../components/matchstick.css");
 @import url("../../components/list.css");
+@import url("../../components/modal.css");
+@import url("../../components/login.css");
 
 /* App Specific Structural Changes */
 @import url('./structure-default/logout-button.css');
 @import url('./structure-default/navbar.css');
 @import url('./structure-default/page.css');
 @import url('./structure-default/note-list.css');
+@import url('./structure-default/login.css');
 
 /* Responsive */
 @import url('./structure-default/landscape.css');
