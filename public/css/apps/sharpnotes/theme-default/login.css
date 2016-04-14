@@ -3,3 +3,30 @@
 	-moz-box-shadow: 0px 1px 3px 1px rgba(209,202,209,1);
 	box-shadow: 0px 1px 3px 1px rgba(209,202,209,1);
 }
+.login {
+	color:#4F544A;
+	font-family: 'Roboto', sans-serif;
+}
+.login .header {
+	background-color: #E9F5C5;
+}
+.login .login-input {
+	color:#4F544A;
+}
+.login .submit {
+	background: #7AB934;
+	border:none;
+	cursor: pointer;
+}
+.login .submit:hover {
+	background: #6FA930;
+}
+.login .submit:active {
+	background: #659A2B;
+}
+.login .message {
+	text-align: center;
+}
+.login .login-input.invalid {
+	background-color: #FFD6C6;
+}

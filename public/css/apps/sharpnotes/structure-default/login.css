@@ -7,7 +7,58 @@
 	margin: -15em 0em 0em -15em;
 }
 .login .header {
+	position: relative;
 	width:30em;
 	height:4em;
 	border-bottom:solid 1px gainsboro;
+}
+.login .header .text {
+    position: absolute;
+    top: 0em;
+    bottom: 0em;
+    left: 0.8em;
+    font-size: 3em;
+    line-height: 1.35em;
+}
+.login .login-input, .login .login-label{
+    width: 12.5em;
+    margin: 0.25em 0em 0em 1.25em;
+    font-size:2em;
+}
+.login .login-input {
+	padding-left:0.25em;
+	line-height: 1.25em;
+}
+.login .submit {
+	display:block;
+	width:8em;
+	font-size:2em;
+	margin:1.25em 0em 0em 6.15em;
+	padding:0.25em;
+}
+.login .message {
+	position: absolute;
+	right:0em;
+	bottom:0em;
+	left:0em;
+	max-height: 6em;
+	padding:0.125em;
+	text-align: center;
+}
+.login .message .text {
+	font-size: 1.25em;
+	padding:0.5em;
+}
+.login .submit.locked {
+	opacity: 0.5;
+	cursor: default;
+}
+.login .message.invalid {
+	background-color: #F9F9AC;
+}
+.login .message.success {
+	background-color: #C5FFC0;
+}
+.login .message.failure {
+	background-color: #FFC0C0;
 }

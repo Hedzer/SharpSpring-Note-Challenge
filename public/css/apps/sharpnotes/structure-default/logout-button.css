@@ -9,3 +9,10 @@
 	font-size: 35%;
 	line-height: 3em;
 }
+.navbar > .matchstick.logout-button .logout-icon { 
+	position: absolute;
+	top:0em;
+	right:0em;
+	bottom:0em;
+	left:0em;
+}

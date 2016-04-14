@@ -1,5 +1,6 @@
 /* Fonts */
 @import url('../../../fonts/MeriendaOne.css');
+@import url('../../../fonts/Roboto.css');
 
 /* Animations & Properties */
 @import url('./theme-default/animations.css');

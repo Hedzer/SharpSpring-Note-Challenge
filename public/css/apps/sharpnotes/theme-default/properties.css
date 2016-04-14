@@ -10,8 +10,17 @@
 	-o-transition: background-color 0.1s ease-in-out;
 	transition: background-color 0.1s ease-in-out;
 }
+.invisible {
+	opacity: 0;
+}
+.intangible {
+	display: none;
+}
 .cursive {
 	font-family: 'Merienda One', cursive;
+}
+.geometric {
+	font-family: 'Roboto', sans-serif;
 }
 .button-a {
 	background-color: #C7F36E;
