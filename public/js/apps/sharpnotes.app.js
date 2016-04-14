@@ -2,11 +2,12 @@ define(
 	[
 		'frameworks/syrup',
 		'components/app',
+		'components/login',
 		'components/sharpnotes/navbar',
 		'components/page',
 		'components/sharpnotes/noteList'
 	],
-	function(Syrup, app, navigation, page, list){
+	function(Syrup, app, login, navigation, page, list){
 		function SharpNotes(){
 			app.call(this);
 			this.class = 'SharpNotes';
@@ -19,6 +20,7 @@ define(
 					this.classList.add('note-list');
 				});
 			});
+			var self = this;
 		}
 		SharpNotes.prototype = Object.create(app.prototype);
 		SharpNotes.prototype.constructor = SharpNotes;
