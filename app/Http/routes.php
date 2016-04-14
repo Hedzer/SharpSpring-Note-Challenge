@@ -10,6 +10,8 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 $app->get('/', function () use ($app) {
     return $app->version();
@@ -20,7 +22,7 @@ $app->group(['prefix' => 'api', 'middleware' => 'jwt.auth'], function () use ($a
 	});
 });
 //Authenticated routes
-$app->group(['prefix' => 'app', 'middleware' => 'jwt.auth'], function () use ($app) {
+$app->group(['prefix' => 'app'], function () use ($app) {
 	$app->get('/{name}', function ($name) use ($app) {
 		//check if user has access to the app
 		if (view()->exists($name)){
@@ -28,20 +30,4 @@ $app->group(['prefix' => 'app', 'middleware' => 'jwt.auth'], function () use ($a
 		}
 	});
 });
-//Unauthenticated, leads to login
-$app->group(['prefix' => 'app'], function () use ($app) {
-	$app->get('/{name}', function ($name) use ($app) {
-		//check if user has access to the app
-		if (view()->exists('login')){
-			return view('login');
-		}
-	});
-});
-
-$app->post('auth/login', 'Authentication@login');
-// $app->get('/app/{name}', function ($name) use ($app) {
-// 	//check if user has access to the app
-// 	if (view()->exists($name)){
-// 		return view($name);
-// 	}
-// });
+$app->post('auth/login', 'AuthenticationController@login');
