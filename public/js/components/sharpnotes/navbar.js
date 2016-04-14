@@ -7,6 +7,7 @@ define(
 	],
 	function(navbar, controller, matchstick){
 		function sharpnotesNavbar(){
+			var self = this;
 			navbar.call(this);
 			this.class = 'sharpnotesNavbar';
 			this.classList.add('sharpnotes-navbar');
@@ -20,6 +21,9 @@ define(
 					logoutButton.classList.add(c);
 				});
 				this.Body.Text.textContent = 'Logout';
+				this.on('click', function(e){
+					self.trigger('logoutRequested', e);
+				});
 			});
 		}
 		sharpnotesNavbar.prototype = Object.create(navbar.prototype);
