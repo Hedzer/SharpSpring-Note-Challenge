@@ -24,7 +24,11 @@ define(function(){
 			}, 0);
 			return decompressed;
 		})();
+		var blacklist = ['remove'];
 		var addElementProperty = function(host, name){
+			if (~blacklist.indexOf(name)){
+				return;
+			}
 			Object.defineProperty(host, name, {
 				get:function(){
 					return this.element[name];
