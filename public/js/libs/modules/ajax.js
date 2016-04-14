@@ -39,6 +39,9 @@ define(function(){
         };
         x.open(method, url, async);
         x.onreadystatechange = function () {
+            if (x.readyState < 4) {
+                return;
+            }
             if (x.readyState == 4) {
                 callback(x.responseText);
                 if (typeof callbacks.success === 'function'){
@@ -57,16 +60,16 @@ define(function(){
             x.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         }
         x.send(data);
-        x.success = function(callback){
-            callbacks.success = callback;
+        x.success = function(c){
+            callbacks.success = c;
             return x;
         };
-        x.failure = function(callback){
-            callbacks.failure = callback;
+        x.failure = function(c){
+            callbacks.failure = c;
             return x;
         };
-        x.then = function(callback){
-            callbacks.then = callback;
+        x.then = function(c){
+            callbacks.then = c;
             return x;
         };
         return x;
