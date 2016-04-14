@@ -14,11 +14,13 @@ class MigrateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('ownerId')->unsigned();
+            $table->integer('type')->unsigned();
             $table->string('title', 255);
             $table->string('body');
             $table->timestamps();
             $table->foreign('ownerId')->references('id')->on('users');
-            $table->foreign('type')->references('id')->on('noteTypes');
+            $table->foreign('type')->references('id')->on('types');
         });
     }
 

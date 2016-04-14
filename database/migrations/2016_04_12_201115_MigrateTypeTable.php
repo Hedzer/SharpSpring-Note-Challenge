@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class NoteTypes extends Migration
+class MigrateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class NoteTypes extends Migration
      */
     public function up()
     {
-        Schema::create('note_types', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
         });
@@ -25,6 +25,6 @@ class NoteTypes extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('types');
     }
 }
