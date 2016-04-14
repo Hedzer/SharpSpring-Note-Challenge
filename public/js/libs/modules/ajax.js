@@ -27,20 +27,49 @@ define(function(){
     };
 
     ajax.send = function (url, callback, method, data, async) {
+        callback = (callback || function(){});
         if (async === undefined) {
             async = true;
         }
         var x = ajax.x();
+        var callbacks = {
+            success:false,
+            failure:false,
+            then:false
+        };
         x.open(method, url, async);
         x.onreadystatechange = function () {
             if (x.readyState == 4) {
-                callback(x.responseText)
+                callback(x.responseText);
+                if (typeof callbacks.success === 'function'){
+                    callbacks.success(x.responseText, x);
+                }
+            } else {
+                if (typeof callbacks.failure === 'function'){
+                    callbacks.failure(x.responseText, x);
+                }
+            }
+            if (typeof callbacks.then === 'function'){
+                callbacks.then(x.responseText, x);
             }
         };
         if (method == 'POST') {
             x.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         }
-        x.send(data)
+        x.send(data);
+        x.success = function(callback){
+            callbacks.success = callback;
+            return x;
+        };
+        x.failure = function(callback){
+            callbacks.failure = callback;
+            return x;
+        };
+        x.then = function(callback){
+            callbacks.then = callback;
+            return x;
+        };
+        return x;
     };
 
     ajax.get = function (url, data, callback, async) {
@@ -48,7 +77,7 @@ define(function(){
         for (var key in data) {
             query.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
         }
-        ajax.send(url + (query.length ? '?' + query.join('&') : ''), callback, 'GET', null, async)
+        return ajax.send(url + (query.length ? '?' + query.join('&') : ''), callback, 'GET', null, async);
     };
 
     ajax.post = function (url, data, callback, async) {
@@ -56,7 +85,7 @@ define(function(){
         for (var key in data) {
             query.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
         }
-        ajax.send(url, callback, 'POST', query.join('&'), async)
+        return ajax.send(url, callback, 'POST', query.join('&'), async);
     };
     return ajax;
 });
