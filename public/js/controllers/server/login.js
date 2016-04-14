@@ -10,11 +10,18 @@ define(
 				{
 					email:credentials.email,
 					password:credentials.password
-				},
-				function(response){
-					console.log(response);
 				}
-			);
+			)
+			.success(function(response, xhr){
+				if (typeof onSuccess === 'function'){
+					onSuccess(response, xhr);
+				}
+			})
+			.failure(function(response, xhr){
+				if (typeof onFailure === 'function'){
+					onFailure(response, xhr);
+				}
+			});
 		}
 		api.login = ServerLoginController;
 		return api;
