@@ -14,14 +14,19 @@ define(
 			var button = Syrup.Elements.button;
 			var login = this;
 			this.add(new input()).as('Username').with(function(){
+				this.classList.add('username');
 				this.type = 'text';
 				this.placeholder = 'email@domain.com';
+				this.value = 'test@test.com';
 			});
 			this.add(new input()).as('Password').with(function(){
+				this.classList.add('password');
 				this.type = 'password';
 				this.placeholder = 'password';
+				this.value = '$sh4rpspr1nG$';
 			});
 			this.add(new button()).as('Submit').with(function(){
+				this.classList.add('submit');
 				this.type = 'button';
 				this.textContent = 'Login';
 				this.on('click', function(e){
