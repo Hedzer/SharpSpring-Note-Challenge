@@ -5,10 +5,13 @@ use Illuminate\Support\Facades\Hash;
 class UserTableSeeder extends Seeder
 {
     public function run() {
+    	$salt = str_random(64);
+    	$password = password_hash('$sh4rpspr1nG$'.$salt, PASSWORD_DEFAULT, ['cost' => 12]);
         DB::table('users')->insert([
-            'name' => str_random(10),
-            'email' => str_random(10).'@gmail.com',
-            'password' => Hash::make('secret'),
+            'name' => 'test',
+            'email' => 'test@test.com',
+            'password' => $password,
+            'salt' => $salt
         ]);
     }
 }
