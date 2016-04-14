@@ -54,6 +54,8 @@ class AuthenticationController extends Controller {
 			$token = $this->newToken($id);
 			$package = [
 				"auth" => true,
+				"expired" => false,
+				"denied" => false,
 				"token" => $token
 			];
 			return $package;
