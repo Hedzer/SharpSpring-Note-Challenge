@@ -20,6 +20,10 @@ define(
 			set:function(value){
 				token = value;
 				if (window.sessionStorage){
+					if (!token){
+						window.sessionStorage.removeItem('token');
+						return;	
+					}
 					window.sessionStorage.setItem('token', value);
 				}
 			}
@@ -31,25 +35,65 @@ define(
 				success:onSuccess,
 				failure:onFailure
 			};
-			return ajax.post(
+			var xhr = ajax.post(
 				url,
 				{
 					data:args,
 					token:API.token
 				}
-			)
-			.success(function(response){
-				//put in authentication check
-				if (typeof onSuccess === 'function'){
-					onSuccess(response, xhr);
-				}
-			})
-			.failure(function(response){
-				//put in authentication check
-				if (typeof onFailure === 'function'){
-					onFailure(response, xhr);
+			);
+			var signature = [
+				'auth',
+				'token',
+				'data'
+			];
+			var router = function(callback){
+				var wrapped = function(response, xhr){
+					try {
+						var packet = JSON.parse(response);
+						if (typeof callback === 'function'){
+							var isPackage = true;
+							signature.forEach(function(prop){
+								isPackage = isPackage & packet.hasOwnProperty(prop);
+							});
+							if (isPackage){
+								//here we would check for expired, refresh tokens, logout, etc
+								xhrProxy._success(packet.data, xhr);
+							} else {
+								xhrProxy._failure(packet.data, 'Incorrect Format');
+							}
+						}
+					}catch(e){
+						xhrProxy._failure(response, 'Parse Error');
+					}
+					xhrProxy._then(response, xhr);		
+				};
+				return wrapped;
+			};
+			var xhrProxy = Object.create(xhr, {
+				success:{
+					value:function(callback){
+						this._success = callback;
+						router(callback);
+						return xhrProxy;
+					}
+				},
+				failure:{
+					value:function(callback){
+						this._failure = callback;
+						router(callback);
+						return xhrProxy;
+					}
+				},
+				then:{
+					value:function(callback){
+						this._then = callback;
+						router(callback);
+						return xhrProxy;
+					}
 				}
 			});
+			return xhrProxy;
 		}
 		return API;
 	}
