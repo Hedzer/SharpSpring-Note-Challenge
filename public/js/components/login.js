@@ -12,12 +12,24 @@ define(
 			this.classList.add('login');
 			var input = Syrup.Elements.input;
 			var button = Syrup.Elements.button;
+			var div = Syrup.Elements.div;
 			var login = this;
+			this.add(new div()).as('Header').with(function(){
+				this.classList.add('header');
+			});
+			this.add(new div()).as('UsernameLabel').with(function(){
+				this.classList.add('username-label');
+				this.textContent = 'Email';
+			});
 			this.add(new input()).as('Username').with(function(){
 				this.classList.add('username');
 				this.type = 'text';
 				this.placeholder = 'email@domain.com';
 				this.value = 'test@test.com';
+			});
+			this.add(new div()).as('PasswordLabel').with(function(){
+				this.classList.add('password-label');
+				this.textContent = 'Password';
 			});
 			this.add(new input()).as('Password').with(function(){
 				this.classList.add('password');
