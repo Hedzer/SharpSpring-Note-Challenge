@@ -25,23 +25,27 @@ class AuthenticationController extends Controller {
 		}
 		return false;
 	}
-	private function newToken($id){
+	private function newToken($id, $ip, $userAgent){
 		$key = env('JWT_KEY');
 		$TTL = env('JWT_TTL', 3600);
 		$now = time();
 		$token = array(
-		    "iss" => "localhost", 	//issuer
-		    "aud" => "localhost", 	//audience
-		    "iat" => $now, 			//issued at
-		    "nbf" => $now-1, 		//not to be accepted before
+		    "iss" => "localhost", 			//issuer
+		    "aud" => "localhost", 			//audience
+		    "iat" => $now, 					//issued at
+		    "nbf" => $now-1, 				//not to be accepted before
 		    "exp" => $now+intval($TTL), 	//expiration
-		    "userId" => $id 		//user id payload
+		    "userId" => $id, 				//user id payload
+		    "IP" => $ip, 					//IP Address
+		    "userAgent" => $userAgent, 		//User Agent
 		);
 		$token = JWT::encode($token, $key);
 		return $token;
 	}
 	public function login(Request $request){
 		$loggedIn = false;
+		$ip = $request->ip();
+		$userAgent = $request->header('User-Agent');
 		//Validate
 		$this->validate($request, [
 			'email' => 'required|email|max:255',
@@ -51,7 +55,7 @@ class AuthenticationController extends Controller {
 		$password = $request->input('password');
 		$id = $this->checkCredentials($email, $password);
 		if ($id){
-			$token = $this->newToken($id);
+			$token = $this->newToken($id, $ip, $userAgent);
 			$package = [
 				"auth" => true,
 				"expired" => false,
