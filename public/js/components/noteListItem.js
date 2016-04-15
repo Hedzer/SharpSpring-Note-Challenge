@@ -35,6 +35,13 @@ define(
 			//Properties & Methods
 			this.useHandles = {};
 			this.uses = modelNote;
+			this.add('boundTo');
+
+			//Events
+			var unbind = this.unbind;
+			this.on('destructed', function(){
+				unbind();
+			});
 		}
 		noteListItem.prototype = Object.create(Syrup.Elements.div.prototype);
 		noteListItem.prototype.constructor = noteListItem;
@@ -42,6 +49,7 @@ define(
 			var self = this;
 			this.unbind();
 			if (item instanceof this.uses){
+				this.boundTo = item;
 				this.useHandles.title = item.$.on('title', function(e){
 					self.Body.Title.Text.textContent = item.title;
 				});
