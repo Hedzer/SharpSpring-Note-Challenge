@@ -1,10 +1,10 @@
 define(
 	[
-		'/js/frameworks/gomme'
+		'frameworks/gomme'
 	],
 	function(Gomme){
 		var none = undefined;
-		var ModelNote = Gomme.model('ModelNote'
+		var ModelNote = Gomme.model('ModelNote',
 			{
 				id:none,
 				title:none,
