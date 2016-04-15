@@ -19,7 +19,7 @@ define(
 			this.add('loggedIn', false);
 			//Navigation
 			this.add(new navigation()).as('Navigation').with(function(){
-				this.classList.add('transitions-all');
+				this.classList.add('transitions-all-slow');
 				this.classList.add('invisible');
 				this.classList.add('intangible');
 				this.on('logoutRequested', function(e){
@@ -34,17 +34,17 @@ define(
 				this.classList.add('intangible');
 				this.add(new list()).as('NoteList').with(function(){
 					this.classList.add('note-list');
-					this.classList.add('transitions-all');
+					this.classList.add('transitions-all-slow');
 				});
 			});
 			//Modal
 			this.add(new modal()).as("LoginModal").with(function(){
-				this.classList.add('transitions-all');
+				this.classList.add('transitions-all-slow');
 				this.classList.add('invisible');
 				this.classList.add('intangible');
 				this.add(new login()).as("Login").with(function(){
-					this.Submit.classList.add('transitions-all');
-					this.Message.classList.add('transitions-all');
+					this.Submit.classList.add('transitions-all-slow');
+					this.Message.classList.add('transitions-all-slow');
 					this.on('loginSucceeded', function(e){
 						sharpnotes.checkLogin();
 						this.Message.reset();
