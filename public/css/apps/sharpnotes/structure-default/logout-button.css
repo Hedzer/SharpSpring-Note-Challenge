@@ -11,8 +11,7 @@
 }
 .navbar > .matchstick.logout-button .logout-icon { 
 	position: absolute;
-	top:0em;
-	right:0em;
-	bottom:0em;
-	left:0em;
+    height: 0.85em;
+    margin-top: 0.075em;
+    margin-left: 0.075em;
 }
