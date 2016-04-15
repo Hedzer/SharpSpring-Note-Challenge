@@ -4,7 +4,7 @@ define(
 	],
 	function(Gomme){
 		var none = undefined;
-		var NoteData = Gomme.model('NoteData'
+		var ModelNote = Gomme.model('ModelNote'
 			{
 				id:none,
 				title:none,
@@ -14,6 +14,6 @@ define(
 				dateUpdated:none
 			}
 		);
-		return NoteData;
+		return ModelNote;
 	}
 );
