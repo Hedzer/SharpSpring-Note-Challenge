@@ -2,11 +2,13 @@ define(
 	[
 		'components/list',
 		'controllers/sharpnotes/noteList',
-		'components/matchstick'
+		'components/matchstick',
+		'components/noteListItem'
 	],
-	function(list, controller, matchstick){
+	function(list, controller, matchstick, noteListItem){
 		function noteList(){
 			//Initialization
+			var notelist = this;
 			var div = Syrup.Elements.div;
 			var span = Syrup.Elements.span;
 			var img = Syrup.Elements.img;
@@ -29,6 +31,11 @@ define(
 				});
 			});
 
+			//Properties
+			this.Items.Render.view = noteListItem;
+			this.Items.Render.controller = function(view, item){
+				
+			};
 		}
 		noteList.prototype = Object.create(list.prototype);
 		noteList.prototype.constructor = noteList;
