@@ -1,0 +1,16 @@
+-Finish list item CSS
+-Finish list item controllers for showing notes
+-Create view/edit component
+Add new note front-end modal
+-Write note item structural & theme CSS
+-Write authorization middleware
+-Get note type migration to work
+-Add notes and types to db seeder
+-Add API call for fetching notes from db
+Add API call for deleting notes
+add API call for creating notes
+Add API call for updating notes
+Offload some controller code left in components into separate controller files
+Turn some code that's too specific into separate components
+Fix inconsistencies in naming convention between some css files
+Convert repeated CSS into properties
