@@ -9,9 +9,4 @@
     color: rgba(107, 167, 15, 0.8);
     text-shadow: 0.05em 0.25em 0.25em #D4FFAB, 0 0 0 #000, 0.125em 0.25em 0.25em #D4FFAB;
     cursor: default;
-	-webkit-animation: fadein 1s;
-	-moz-animation: fadein 1s;
-	-ms-animation: fadein 1s;
-	-o-animation: fadein 1s;
-	animation: fadein 1s;
 }

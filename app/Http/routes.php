@@ -14,14 +14,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+	return redirect('/app/sharpnotes');
 });
-$app->group(['prefix' => 'api', 'middleware' => 'jwt.auth'], function () use ($app) {
-	$app->get('/', function ()    {
 
-	});
+//login route
+$app->post('auth/login', 'AuthenticationController@login');
+
+//Authorized routes - needs to be moved into a separate file
+$app->group(['prefix' => 'api/notes'], function () use ($app) {
+	$app->post('/list', 'App\Http\Controllers\NotesController@all');
+	$app->post('/create', 'App\Http\Controllers\NotesController@create');
+	$app->post('/update', 'App\Http\Controllers\NotesController@update');
+	$app->post('/delete', 'App\Http\Controllers\NotesController@delete');
 });
-//Authenticated routes
+//App Routes
 $app->group(['prefix' => 'app'], function () use ($app) {
 	$app->get('/{name}', function ($name) use ($app) {
 		//check if user has access to the app
@@ -30,4 +36,3 @@ $app->group(['prefix' => 'app'], function () use ($app) {
 		}
 	});
 });
-$app->post('auth/login', 'AuthenticationController@login');

@@ -8,10 +8,11 @@
 	left:0em;
 	height:5em;
 }
-.list .content {
+.list .collection {
 	position: absolute;
 	top:5em;
 	right:0em;
 	bottom: 0em;
 	left:0em;
+	overflow: hidden;
 }
