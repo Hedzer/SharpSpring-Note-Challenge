@@ -32,6 +32,19 @@ define(
 							this.className = 'svg-icon';
 						});						
 					});
+					this.on('click', function(){
+						Server.Notes.update(
+							noteeditor.boundTo,
+							function saved(response){
+								//create modal to let the user know it was saved
+								noteeditor.trigger('noteSaved', noteeditor.boundTo);
+							},
+							function failed(response){
+								//create modal to let the user know it was saved
+								noteeditor.trigger('noteSavingFailed', response);
+							}
+						);
+					});
 				});
 				this.add(new matchstick()).as('Dictate').with(function(){
 					this.classList.add('dictate');
@@ -62,7 +75,34 @@ define(
 						this.add(new img()).as('Picture').with(function(){
 							this.src = '/images/delete.svg.php?color=ff0000';
 							this.className = 'svg-icon';
-						});						
+						});
+					});
+					this.on('click', function(){
+						Server.Notes.delete(
+							noteeditor.boundTo.id,
+							function saved(response){
+								//create modal to let the user know it was saved
+								try {
+									var response = JSON.parse(response);
+									var data = response.data;
+									console.log(data);
+									if (data){
+										noteeditor.trigger('noteDeleted', noteeditor.boundTo.id);
+										noteeditor.Title.value = "";
+										noteeditor.Note.value = "";								
+									}
+									//somethign went wrong
+								} catch (e){
+									//somethign went wrong
+									console.log(e);
+								}
+
+							},
+							function failed(response){
+								//create modal to let the user know it was saved
+								noteeditor.trigger('noteDeletionFailed', response);
+							}
+						);
 					});
 				});
 			});
@@ -89,6 +129,14 @@ define(
 			var unbind = this.unbind;
 			this.on('destructed', function(){
 				unbind();
+			});
+
+			//come back to this
+			this.on('boundToPropertyChanged', function(){
+				var disabled = !(this.boundTo && this.boundTo.id);
+				this.Toolbar.Save.disabled = disabled;
+				this.Toolbar.Dictate.disabled = disabled;
+				this.Toolbar.Delete.disabled = disabled;
 			});
 
 			var tutorial = new modelNote();
