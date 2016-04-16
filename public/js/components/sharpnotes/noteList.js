@@ -31,10 +31,34 @@ define(
 				this.Body.Text.with(function(){
 					this.textContent = 'New Note';
 				});
+				this.on("click", function(){
+					Server.Notes.create(
+						{},
+						function success(response){
+							try {
+								var response = JSON.parse(response);
+								var data = response.data;
+								if (typeof data === 'object'){
+									var noteId = data.id;
+									notelist.addNote(data);
+									notelist.Items.clear();
+									notelist.Items.render();
+									var view = notelist.Items.rendered[noteId];
+									if (view){
+										view.trigger('click');
+									}
+								}
+							} catch(e){}
+
+						},
+						function failure(response){}
+					);					
+				});
+
 			});
 
 			//Properties & Methods
-			this.add('note');
+			this.add(['note', 'noteTypes']);
 			this.Items.Render.view = noteListItem;
 			this.Items.sorter = function(a,b){
 				return (b.dateCreated - a.dateCreated);
@@ -52,6 +76,19 @@ define(
 					});					
 				}
 			};
+			this.addNote = function(record){
+				var item = new note();
+				item.id = record.id;
+				item.title = record.title;
+				item.body = record.body;
+				try {
+					var t = record.updated_at.split(/[- :]/);
+					var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]).valueOf();
+					item.dateCreated = d;									
+				} catch(e){}
+				item.type = notelist.noteTypes[record.typeId];
+				notelist.Items.add(item);
+			};
 			this.getNotes = function(){
 				//this needs a service for the note models but there's no time
 				Server.Notes.list(function(raw){
@@ -60,16 +97,15 @@ define(
 					try {
 						var response = JSON.parse(raw);
 						var data = response.data;
+						if (data && data.types && Array.isArray(data.types)){
+							notelist.noteTypes = {};
+							data.types.forEach(function(type){
+								notelist.noteTypes[type.id] = type.name;
+							});
+						}
 						if (data && data.notes && Array.isArray(data.notes)){
 							notelist.Items.removeAll(); //should take the time out to merge properly vs clear and update
-							data.notes.forEach(function(record){
-								var item = new note();
-								item.id = record.id;
-								item.title = record.title;
-								item.body = record.body;
-								item.dateCreated = new Date(record.updated_at);
-								notelist.Items.add(item);
-							});
+							data.notes.forEach(notelist.addNote);
 							notelist.Items.render();
 						}
 					} catch (e){
