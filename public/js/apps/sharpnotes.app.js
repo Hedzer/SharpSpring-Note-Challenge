@@ -60,6 +60,10 @@ define(
 							this.classList.add('cursive');
 						});
 					});
+					this.on('noteDeleted', function(e){
+						var noteId = e.detail;
+						sharpnotes.Page.NoteList.Items.remove(noteId);
+					});
 				});
 			});
 			//Modal
