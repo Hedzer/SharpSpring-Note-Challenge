@@ -36,7 +36,7 @@ class AuthenticationController extends Controller {
 		    "nbf" => $now-1, 				//not to be accepted before
 		    "exp" => $now+intval($TTL), 	//expiration
 		    "userId" => $id, 				//user id payload
-		    "IP" => $ip, 					//IP Address
+		    "ip" => $ip, 					//IP Address
 		    "userAgent" => $userAgent, 		//User Agent
 		);
 		$token = JWT::encode($token, $key);
