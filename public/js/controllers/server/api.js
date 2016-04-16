@@ -36,11 +36,13 @@ define(
 				failure:onFailure
 			};
 			var xhr = ajax.post(
-				url,
+				'/api/'+url,
 				{
 					data:args,
 					token:API.token
-				}
+				},
+				onSuccess,
+				onFailure
 			);
 			var signature = [
 				'auth',
@@ -59,6 +61,7 @@ define(
 							if (isPackage){
 								//here we would check for expired, refresh tokens, logout, etc
 								xhrProxy._success(packet.data, xhr);
+								(onSuccess || function(){})(packet.data, xhr);
 							} else {
 								xhrProxy._failure(packet.data, 'Incorrect Format');
 							}
