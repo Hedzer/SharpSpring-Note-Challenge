@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use \Firebase\JWT\JWT;
 class AuthorizationController extends Controller {
+	public $authorized = false;
 	public function __construct() {
 
 	}
@@ -41,6 +42,7 @@ class AuthorizationController extends Controller {
 			if ($iat < $nbf || $iat > $exp){
 				return false;
 			}
+			$this->authorized = true;
 			return $id;			
 		} catch (Exception $e) {
 			return false;
@@ -48,9 +50,10 @@ class AuthorizationController extends Controller {
 	}
 	public function package($data){
 		return [
-			"auth" => false,
+			"auth" => $this->authorized,
 			"expired" => false,
 			"denied" => false,
+			"error" => false,
 			"data" => $data
 		];
 	}
@@ -67,6 +70,11 @@ class AuthorizationController extends Controller {
 	public function approved($data){
 		$package = $this->package($data);
 		$package["auth"] = true;
+		return $package;
+	}
+	public function error($data){
+		$package = $this->package($data);
+		$package["error"] = true;
 		return $package;
 	}
 }
