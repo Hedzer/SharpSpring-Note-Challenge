@@ -1,0 +1,52 @@
+.note-list-item {
+	position: relative;
+	width:100%;
+	height:5em;
+	margin:0em;
+	overflow: hidden;
+}
+.note-list-item .icon {
+	position: absolute;
+	top:0em;
+	left:0em;
+	height:5em;
+	width:5em;
+}
+.note-list-item .body {
+	position: absolute;
+	top:0em;
+	right:0em;
+	left:5em;
+	height:5em;
+}
+.note-list-item .body .title, .note-list-item .body .fader{
+	position: absolute;
+	top:0em;
+	right:0em;
+	left:0em;
+	height:3em;
+}
+.note-list-item .body .title .text, .note-list-item .body .date .text{
+	position: absolute;
+	top:0em;
+	right:0em;
+	bottom:0em;
+	left:0em;
+	white-space: nowrap;
+}
+.note-list-item .body .title .text {
+	font-size: 200%;
+	line-height: 1.5em;
+	padding-left: 0.5em;
+}
+.note-list-item .body .date .text {
+	line-height: 2em;
+	padding-left: 1em;
+}
+.note-list-item .body .date{
+	position: absolute;
+	top:3em;
+	right:0em;
+	left:0em;
+	height:2em;
+}

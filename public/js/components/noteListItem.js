@@ -25,6 +25,9 @@ define(
 						this.classList.add('text');
 					});
 				});
+				this.add(new div()).as('Fader').with(function(){
+					this.classList.add('fader');
+				});
 				this.add(new div()).as('Date').with(function(){
 					this.classList.add('date');
 					this.add(new span()).as('Text').with(function(){
@@ -48,15 +51,20 @@ define(
 		noteListItem.prototype.bindTo = function(item){
 			var self = this;
 			this.unbind();
-			if (item instanceof this.uses){
+			var note = this.uses;
+			if (item instanceof note){
 				this.boundTo = item;
-				this.useHandles.title = item.$.on('title', function(e){
+				var setTitle = function(){
 					self.Body.Title.Text.textContent = item.title;
-				});
-				this.useHandles.dateCreated = item.$.on('dateCreated', function(e){
+				};
+				var setDate = function(){
 					var jsDate = new Date(item.dateCreated * 1000);
-					self.Body.Date.Text.textContent = date.toLocaleString(self.dateLocale, self.dateOptions);
-				});
+					self.Body.Date.Text.textContent = jsDate.toLocaleString(self.dateLocale, self.dateOptions);
+				};
+				this.useHandles.title = item.$.on('title', setTitle);
+				this.useHandles.dateCreated = item.$.on('dateCreated', setDate);
+				setTitle();
+				setDate();
 				return;
 			}
 			console.log('Item: ', item, ' is not and instance of ', this.uses);
