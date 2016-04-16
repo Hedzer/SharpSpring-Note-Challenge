@@ -15,4 +15,5 @@
 	bottom: 0em;
 	left:0em;
 	overflow: hidden;
+	overflow-y:auto;
 }
