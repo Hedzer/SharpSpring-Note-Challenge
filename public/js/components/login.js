@@ -33,6 +33,9 @@ define(
 				this.type = 'text';
 				this.placeholder = 'email@domain.com';
 				this.value = 'test@test.com';
+				this.on(['input', 'keypress'], function(){
+					login.unmarkFields();
+				});
 			});
 			this.add(new div()).as('PasswordLabel').with(function(){
 				this.classList.add('password-label');
@@ -45,6 +48,9 @@ define(
 				this.type = 'password';
 				this.placeholder = 'password';
 				this.value = '$sh4rpspr1nG$';
+				this.on(['input', 'keypress'], function(){
+					login.unmarkFields();
+				});
 			});
 			this.add(new button()).as('Submit').with(function(){
 				var submit = this;
@@ -69,15 +75,16 @@ define(
 							password:login.Password.value,
 						},
 						function success(response){
-							console.log('success ', response);
 							login.Message.reset();
 							login.Message.classList.add('success');
 							login.trigger('loginSucceeded', response);
 							login.Message.Text.textContent = 'Login Successful!';
+							setTimeout(function(){
+								login.Message.reset();
+							}, 1000);
 							submit.unlock(250);
 						},
 						function failure(response){
-							console.log('failed ', response);
 							login.Message.reset();
 							login.Message.classList.add('failure');
 							if (typeof response === 'string'){
@@ -87,6 +94,7 @@ define(
 							submit.unlock(250);
 						},
 						function invalid(response){
+							login.Message.reset();
 							if (response.email){
 								login.Username.classList.add('invalid');
 							}
@@ -95,7 +103,6 @@ define(
 							}
 							login.Message.reset();
 							login.Message.classList.add('invalid');
-							console.log(response , typeof response);
 							if (typeof response === 'object'){
 								var warnings = '';
 								Object.keys(response).forEach(function(key){
@@ -121,7 +128,7 @@ define(
 					this.classList.remove('invalid');
 					this.classList.remove('success');
 					this.classList.remove('failure');
-					this.textContent = '';
+					this.Text.textContent = '';
 				};
 				this.classList.add('message');
 				this.add(new div()).as('Text').with(function(){
@@ -131,6 +138,10 @@ define(
 		}
 		login.prototype = Object.create(Syrup.Elements.form.prototype);
 		login.prototype.constructor = login;
+		login.prototype.unmarkFields = function(){
+			this.Username.classList.remove('invalid');
+			this.Password.classList.remove('invalid');
+		};
 		return login;
 	}
 );
