@@ -29,6 +29,7 @@ define(
 				roster:{},
 				rendered:{},
 				sorter:function(a,b){ //the sorting algorithm
+					console.log('ran default')
 					return 0;
 				}
 			};
@@ -49,7 +50,7 @@ define(
 			addItem:function(item){
 				var id = (item.id || this.newId());
 				item.id = id;
-				this.Items.roster[id] = view;		
+				this.Items.roster[id] = item;		
 			},
 			removeItem:function(id){
 				var view = this.Items.rendered[id];
@@ -66,12 +67,18 @@ define(
 			},
 			renderItems:function(){
 				var self = this;
-				this.Items.removeAll();
+				Object.keys(this.Items.rendered).forEach(function(view){
+					if (view && typeof view.remove === 'function'){
+						view.remove();
+					}
+				});
 				var list = [];
 				Object.keys(this.Items.roster).forEach(function(id){
 					list.push(self.Items.roster[id]);
 				});
-				list.sort(this.Items.sorter);
+				list.sort(function(a,b){
+					return self.Items.sorter(a,b);
+				});
 				list.forEach(function(item){
 					if (typeof self.Items.Render.view === 'function'){
 						var view = new self.Items.Render.view();
