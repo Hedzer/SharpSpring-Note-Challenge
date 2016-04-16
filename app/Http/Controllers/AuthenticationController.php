@@ -27,7 +27,7 @@ class AuthenticationController extends Controller {
 	}
 	private function newToken($id, $ip, $userAgent){
 		$key = env('JWT_KEY');
-		$TTL = env('JWT_TTL', 3600);
+		$TTL = env('JWT_TTL', 86400);
 		$now = time();
 		$token = array(
 		    "iss" => "localhost", 			//issuer
