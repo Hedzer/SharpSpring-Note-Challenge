@@ -318,6 +318,7 @@ define(function(){
 				}
 			}
 		};
+		window.Gomme = Gomme;
 		return Gomme;
 	})(window);
 	return Exported;
