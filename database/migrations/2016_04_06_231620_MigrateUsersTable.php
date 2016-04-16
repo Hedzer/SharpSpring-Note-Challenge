@@ -18,7 +18,8 @@ class MigrateUsersTable extends Migration
             $table->string('email', 255);
             $table->string('password', 255);
             $table->string('salt', 64);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->unique('email');
             $table->engine = 'InnoDB';
         });
