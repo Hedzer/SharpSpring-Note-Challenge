@@ -1,0 +1,12 @@
+.note-editor {
+	position: absolute;
+	top:0em;
+	right:0em;
+	bottom:0em;
+	z-index: 8;
+}
+.note-editor .toolbar .save .head .svg-icon,
+.note-editor .toolbar .dictate .head .svg-icon,
+.note-editor .toolbar .delete .head .svg-icon {
+	width: 100%;
+}
