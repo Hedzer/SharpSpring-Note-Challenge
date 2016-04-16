@@ -26,6 +26,7 @@ define(
 				remove:this.Static.removeItem.bind(this),
 				removeAll:this.Static.removeAllItems.bind(this),
 				render:this.Static.renderItems.bind(this),
+				clear:this.Static.clearRendered.bind(this),
 				roster:{},
 				rendered:{},
 				sorter:function(a,b){ //the sorting algorithm
@@ -67,7 +68,8 @@ define(
 			},
 			renderItems:function(){
 				var self = this;
-				Object.keys(this.Items.rendered).forEach(function(view){
+				Object.keys(this.Items.rendered).forEach(function(id){
+					var view = self.Items.rendered[id];
 					if (view && typeof view.remove === 'function'){
 						view.remove();
 					}
@@ -94,6 +96,15 @@ define(
 							}
 							view.addTo(self.Collection);
 						}			
+					}
+				});
+			},
+			clearRendered:function(){
+				var self = this;
+				Object.keys(this.Items.rendered).forEach(function(id){
+					var view = self.Items.rendered[id];
+					if (view && typeof view.remove === 'function'){
+						view.remove();
 					}
 				});
 			}
