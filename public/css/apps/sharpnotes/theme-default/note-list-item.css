@@ -1,0 +1,48 @@
+.note-list-item {
+	color:#5E6557;
+	border:solid 1px gainsboro;
+	cursor: pointer;
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+	z-index: 0;
+}
+.note-list-item:hover {
+	-webkit-box-shadow: 0px 0px 3px 1px rgba(209,202,209,1);
+	-moz-box-shadow: 0px 0px 3px 1px rgba(209,202,209,1);
+	box-shadow: 0px 0px 3px 1px rgba(209,202,209,1);
+	z-index: 1;
+}
+.note-list-item:active {
+	background-color: #CBD7F9;
+}
+.note-list-item.selected {
+	background-color: #CBD7F9;
+}
+.note-list-item .icon {
+	border-right:solid 1px gainsboro;
+}
+.note-list-item .body {
+}
+.note-list-item .body .fader{
+	background: -moz-linear-gradient(left,  rgba(255,255,255,0) 60%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 60%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  rgba(255,255,255,0) 60%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+}
+.note-list-item.selected .body .fader{
+	background: -moz-linear-gradient(left,  rgba(255,255,255,0) 60%, #CBD7F9); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 60%,#CBD7F9); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  rgba(255,255,255,0) 60%,#CBD7F9); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#CBD7F9',GradientType=1 ); /* IE6-9 */
+}
+.note-list-item .body .title .text{
+	font-family: 'Merienda One', cursive;
+}
+.note-list-item .body .date .text {
+	font-family: 'Roboto', sans-serif;
+}
+.note-list-item .body .date{
+
+}

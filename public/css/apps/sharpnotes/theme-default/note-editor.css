@@ -1,0 +1,27 @@
+.note-editor {
+	background-color: white;
+}
+.note-editor .toolbar, .note-editor .title, .note-editor .note {
+	border: none;
+}
+.note-editor .toolbar {
+
+}
+.note-editor .title {
+	border-bottom: dashed 2px gainsboro;
+}
+.note-editor .note {
+
+}
+.note-editor .title:focus,  .note-editor .note:focus{
+	outline:none;
+}
+.note-editor .toolbar .save,
+.note-editor .toolbar .dictate {
+	color:#768468;
+	border:solid 1px gainsboro;
+}
+.note-editor .toolbar .delete {
+	color:red;
+	border:solid 1px gainsboro;
+}
