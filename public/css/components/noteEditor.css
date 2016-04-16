@@ -1,0 +1,54 @@
+.note-editor {
+	position: relative;
+	overflow: hidden;
+}
+/*.note-editor .toolbar, .note-editor .title, .note-editor .note {
+	width:100%;
+}*/
+.note-editor .toolbar {
+	position: absolute;
+	top:0em;
+	right:0em;
+	left:0em;
+	height:3em;
+}
+.note-editor .title {
+	position: absolute;
+	top:1.3em;
+	width: 27.7em;
+	height:1.6em;
+	font-size: 250%;
+	text-align:center;
+}
+.note-editor .note-wrapper {
+	position: absolute;
+	width: 100%;
+	top:7.55em;
+	bottom:0em;
+}
+.note-editor .note-wrapper .note {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 1em;
+	font-size: 150%;
+	overflow: hidden;
+	overflow-y:auto;
+	resize: none;
+}
+.note-editor .toolbar .save,
+.note-editor .toolbar .dictate,
+.note-editor .toolbar .delete {
+	position: relative;
+	width:3em;
+	float:left;
+	font-size: 298%; /*scale*/
+}
+.note-editor .toolbar .save .body .text,
+.note-editor .toolbar .dictate .body .text,
+.note-editor .toolbar .delete .body .text {
+	padding-left: 0em;
+	font-size: 0.45em;
+	line-height: 2.4em;
+}
