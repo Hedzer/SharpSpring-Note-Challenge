@@ -38,7 +38,7 @@ define(
 			var xhr = ajax.post(
 				'/api/'+url,
 				{
-					data:args,
+					data:JSON.stringify(args),
 					token:API.token
 				},
 				onSuccess,
